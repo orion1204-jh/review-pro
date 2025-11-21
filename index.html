@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://picsum.photos/32/32" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Review Pro AI</title>
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'media',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: [
+                '-apple-system',
+                'BlinkMacSystemFont',
+                '"SF Pro Text"',
+                '"Segoe UI"',
+                'Roboto',
+                'Helvetica',
+                'Arial',
+                'sans-serif',
+              ],
+            },
+            colors: {
+              // Using CSS variables defined in style tag
+              bg: 'var(--bg-body)',
+              card: 'var(--bg-card)',
+              nav: 'var(--bg-nav)',
+              primary: 'var(--text-primary)',
+              secondary: 'var(--text-secondary)',
+              accent: 'var(--accent-blue)',
+              'accent-hover': 'var(--accent-blue-hover)',
+              'accent-bg': 'var(--accent-bg)',
+              divider: 'var(--divider)',
+              blank: 'var(--blank-bg)',
+              'blank-hover': 'var(--blank-hover)',
+              ring: 'var(--ring-track)',
+              progress: 'var(--ring-progress)',
+            },
+            animation: {
+              'fade-up': 'fadeUp 0.8s ease-out forwards',
+              'pop-in': 'popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+            },
+            keyframes: {
+              fadeUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              popIn: {
+                '0%': { opacity: '0', transform: 'scale(0.8) translateY(5px)' },
+                '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        /* Light Mode Defaults */
+        --bg-body: #F5F5F7;
+        --bg-card: rgba(255, 255, 255, 0.85);
+        --bg-nav: rgba(255, 255, 255, 0.75);
+        
+        --text-primary: #1d1d1f;
+        --text-secondary: #86868b;
+        
+        --accent-blue: #0071e3;
+        --accent-blue-hover: #0077ed;
+        --accent-bg: rgba(0, 113, 227, 0.08);
+        
+        --divider: rgba(0, 0, 0, 0.1);
+        --blank-bg: #eef0f2;
+        --blank-hover: #e0e2e5;
+        
+        --ring-track: #e5e5ea;
+        --ring-progress: #34c759;
+
+        /* Active Nav Colors */
+        --nav-active-bg: #1d1d1f;
+        --nav-active-text: #ffffff;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          /* Dark Mode Overrides */
+          --bg-body: #000000;
+          --bg-card: #1c1c1e;
+          --bg-nav: rgba(28, 28, 30, 0.75);
+          
+          --text-primary: #f5f5f7;
+          --text-secondary: #86868b;
+          
+          --accent-blue: #2997ff;
+          --accent-blue-hover: #47aaff;
+          --accent-bg: rgba(41, 151, 255, 0.15);
+          
+          --divider: #38383a;
+          --blank-bg: #2c2c2e;
+          --blank-hover: #3a3a3c;
+          
+          --ring-track: #3a3a3c;
+          --ring-progress: #30d158;
+
+          /* Active Nav Colors (High Contrast) */
+          --nav-active-bg: #ffffff; 
+          --nav-active-text: #000000; 
+        }
+      }
+
+      body {
+        background-color: var(--bg-body);
+        color: var(--text-primary);
+        -webkit-font-smoothing: antialiased;
+        transition: background-color 0.4s ease, color 0.4s ease;
+      }
+      
+      /* Glassmorphism utilities */
+      .glass-nav {
+        background: var(--bg-nav);
+        backdrop-filter: saturate(180%) blur(20px);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        border-bottom: 1px solid var(--divider);
+      }
+      
+      .glass-card {
+        background: var(--bg-card);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .glass-card {
+          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+      }
+
+      /* Scrollbar hiding */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .mask-linear {
+        mask-image: linear-gradient(to right, black 90%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('SW registered!', reg))
+            .catch(err => console.log('SW failed', err));
+        });
+      }
+    </script>
+  <script type="module" src="/src/index.tsx"></script>
+</body>
+</html>

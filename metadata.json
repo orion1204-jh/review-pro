@@ -1,0 +1,5 @@
+{
+  "name": "Review Pro AI",
+  "description": "An AI-powered English mock exam study tool. Upload a PDF, and Gemini 3 Pro parses the content into an interactive study guide with smart blanks, translations, and summaries.",
+  "requestFramePermissions": []
+}
